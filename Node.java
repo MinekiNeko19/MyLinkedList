@@ -7,7 +7,7 @@ public class Node{
     private String data;
     private Node next,prev;
     //write get/set methods for all three instance variables.
-
+    //set
     public void setData(String value) {
         data = value;
     }
@@ -16,5 +16,16 @@ public class Node{
     }
     public void setPrev(Node n) {
         prev = n;
+    }
+
+    //get
+    public String data() {
+        return data;
+    }
+    public Node next() {
+        return next;
+    }
+    public Node prev() {
+        return prev;
     }
 }

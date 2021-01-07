@@ -66,6 +66,20 @@ public class MyLinkedList{
         return s;
     }
 
+    public String toStringReversed() {
+        reset();
+        String s = "";
+        while (end.prev() != null) {
+            s+=end.data();
+            end = end.prev();
+            if (end.prev() != null) {
+                s+=", ";
+            }
+        }
+        reset();
+        return s;
+    }
+
     //Any helper method that returns a Node object MUST BE PRIVATE!
     private Node nodeAtIndex(int index) {
         reset();
@@ -121,6 +135,7 @@ public class MyLinkedList{
 
         // testing toString
         // System.out.println(a.toString());
+        // System.out.println(a.toStringReversed());
 
         // testing exceptions
         // try {

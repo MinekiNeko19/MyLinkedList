@@ -35,15 +35,27 @@ public class MyLinkedList{
         return "";
     }
     //Any helper method that returns a Node object MUST BE PRIVATE!
+    private Node nodeAtIndex(int index) {
+        if (index < 1 || index > size()) return null;
+        for (int i = 0; i < index; i++) {
+            start=start.next();
+        }
+        return start;
+    }
 
     public static void main(String[] args) {
         // Testing size and add(String value) GET(INT INDEX) CURRENTLY IS NOT CORRECT
         MyLinkedList a = new MyLinkedList();
         a.add("primodial soup");
-        System.out.println(a.size());
-        // System.out.println(a.get(0));
+        // System.out.println(a.size());
+        // // System.out.println(a.get(0));
         a.add("unicellular organism");
-        System.out.println(a.size());
-        System.out.println(a.get(0));
+        // System.out.println(a.size());
+        // System.out.println(a.get(0));
+
+        a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
+
+        //testing helper method nodeAtIndex
+        System.out.println(a.nodeAtIndex(3).data());
     }
    }

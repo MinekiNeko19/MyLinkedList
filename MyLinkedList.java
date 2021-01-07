@@ -25,7 +25,17 @@ public class MyLinkedList{
         return true;
     }
     public void add(int index, String value) {
-        Node temp = nodeAtIndex(index);
+        size++;
+        Node temp = new Node(value);
+        nodeAtIndex(index); // start gets set to the node at index
+
+        // links prev and start
+        temp.setPrev(start.prev());
+        start.prev().setNext(temp);
+
+        // connecting temp and start
+        temp.setNext(start);
+        start.setPrev(temp);
 
     }
     public String get(int index) {
@@ -40,6 +50,7 @@ public class MyLinkedList{
     }
     //Any helper method that returns a Node object MUST BE PRIVATE!
     private Node nodeAtIndex(int index) {
+        reset();
         if (index < 1 || index > size()) throw new IndexOutOfBoundsException();
         for (int i = 0; i < index; i++) {
             start=start.next();
@@ -78,6 +89,10 @@ public class MyLinkedList{
 
 
         //testing add(index, value)
+        a.add(3,"algae");
+        a.reset();
+        System.out.println(a.nodeAtIndex(3).data());
+
 
     }
    }

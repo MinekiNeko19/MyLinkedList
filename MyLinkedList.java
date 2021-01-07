@@ -11,6 +11,7 @@ public class MyLinkedList{
     public int size() {
         return size;
     };
+
     public boolean add(String value) {
         size++;
         if (start == null) {
@@ -24,10 +25,11 @@ public class MyLinkedList{
         end = temp;
         return true;
     }
+
     public void add(int index, String value) {
         size++;
         Node temp = new Node(value);
-        nodeAtIndex(index); // start gets set to the node at index
+        nodeAtIndex(index); // start gets set to the node at index; helper can throw exception
 
         // links prev and start
         temp.setPrev(start.prev());
@@ -38,15 +40,18 @@ public class MyLinkedList{
         start.setPrev(temp);
 
     }
+
     public String get(int index) {
-        return nodeAtIndex(index).data();
+        return nodeAtIndex(index).data(); // helper can throw exception
     }
+
     public String set(int index, String value) {
-        nodeAtIndex(index);
+        nodeAtIndex(index); // helper can throw exception
         String temp = start.data();
         start.setData(value);
         return temp;
     }
+
     public String toString() {
         reset();
         String s = "";
@@ -59,6 +64,7 @@ public class MyLinkedList{
         }
         return s;
     }
+
     //Any helper method that returns a Node object MUST BE PRIVATE!
     private Node nodeAtIndex(int index) {
         reset();
@@ -80,18 +86,18 @@ public class MyLinkedList{
 
     public static void main(String[] args) {
         // Testing size and add(String value) GET(INT INDEX) CURRENTLY IS NOT CORRECT
-        MyLinkedList a = new MyLinkedList();
-        a.add("primodial soup");
+        // MyLinkedList a = new MyLinkedList();
+        // a.add("primodial soup");
         // System.out.println(a.size());
         // // System.out.println(a.get(0));
-        a.add("unicellular organism");
+        // a.add("unicellular organism");
         // System.out.println(a.size());
         // System.out.println(a.get(0));
 
-        a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
+        // a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
 
         //testing helper method nodeAtIndex
-        System.out.println(a.nodeAtIndex(3).data());
+        // System.out.println(a.nodeAtIndex(3).data());
 
         //testing helper method reset()
         // a.reset();
@@ -100,19 +106,29 @@ public class MyLinkedList{
 
 
         //testing add(index, value)
-        a.add(3,"algae");
-        a.reset();
-        System.out.println(a.nodeAtIndex(3).data());
+        // a.add(3,"algae");
+        // a.reset();
+        // System.out.println(a.nodeAtIndex(3).data());
 
         //testing get(index)
         // System.out.println(a.get(4));
         // System.out.println(a.get(2));
 
         //testing set
-        System.out.println(a.set(4, "sea plants"));
+        // System.out.println(a.set(4, "sea plants"));
         // System.out.println(a.get(4));
 
         // testing toString
-        System.out.println(a.toString());
+        // System.out.println(a.toString());
+
+        // testing exceptions
+        // try {
+            // a.set(10, "hooman");
+            // a.get(12);
+        //     a.add(50,"rocks");
+        // } catch (IndexOutOfBoundsException e) {
+        //     e.printStackTrace();
+        //     System.out.println("negative index or index greater than size");
+        // }
     }
    }

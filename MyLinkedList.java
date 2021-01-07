@@ -64,8 +64,9 @@ public class MyLinkedList{
         while (start.next() != null) {
             s+=start.data();
             start = start.next();
-            if (start.next() != null) {
-                s+=", ";
+            s+=", ";
+            if (start.next() == null) {
+                s+= start.data();
             }
         }
         reset();
@@ -78,8 +79,9 @@ public class MyLinkedList{
         while (end.prev() != null) {
             s+=end.data();
             end = end.prev();
-            if (end.prev() != null) {
-                s+=", ";
+            s+=", ";
+            if (end.prev() == null) {
+                s+= end.data();
             }
         }
         reset();

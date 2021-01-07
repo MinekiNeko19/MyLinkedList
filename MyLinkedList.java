@@ -83,7 +83,7 @@ public class MyLinkedList{
     //Any helper method that returns a Node object MUST BE PRIVATE!
     private Node nodeAtIndex(int index) {
         reset();
-        if (index < 1 || index > size()) throw new IndexOutOfBoundsException();
+        if (index < 0 || index > size()) throw new IndexOutOfBoundsException();
         for (int i = 0; i < index; i++) {
             start=start.next();
         }

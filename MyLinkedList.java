@@ -30,9 +30,9 @@ public class MyLinkedList{
         if (index==size()) {
             add(value);
         } else {
-            size++;
             Node temp = new Node(value);
             nodeAtIndex(index); // start gets set to the node at index; helper can throw exception
+            size++;
 
             // links prev and temp
             temp.setPrev(start.prev());

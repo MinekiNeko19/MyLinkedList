@@ -27,17 +27,23 @@ public class MyLinkedList{
     }
 
     public void add(int index, String value) {
-        size++;
-        Node temp = new Node(value);
-        nodeAtIndex(index); // start gets set to the node at index; helper can throw exception
+        if (index==size()) {
+            add(value);
+        } else {
+            size++;
+            Node temp = new Node(value);
+            nodeAtIndex(index); // start gets set to the node at index; helper can throw exception
 
-        // links prev and start
-        temp.setPrev(start.prev());
-        start.prev().setNext(temp);
+            // links prev and temp
+            temp.setPrev(start.prev());
+            if (start.prev()!=null) {
+                start.prev().setNext(temp);
+            }
 
-        // connecting temp and start
-        temp.setNext(start);
-        start.setPrev(temp);
+            // connecting temp and start
+            temp.setNext(start);
+            start.setPrev(temp);
+        }
 
     }
 

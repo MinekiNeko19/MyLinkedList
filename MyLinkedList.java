@@ -62,6 +62,7 @@ public class MyLinkedList{
                 s+=", ";
             }
         }
+        reset();
         return s;
     }
 

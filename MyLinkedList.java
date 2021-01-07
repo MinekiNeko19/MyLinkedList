@@ -42,7 +42,10 @@ public class MyLinkedList{
         return nodeAtIndex(index).data();
     }
     public String set(int index, String value) {
-        return "";
+        nodeAtIndex(index);
+        String temp = start.data();
+        start.setData(value);
+        return temp;
     }
     public String toString() {
         return "";
@@ -93,7 +96,11 @@ public class MyLinkedList{
         System.out.println(a.nodeAtIndex(3).data());
 
         //testing get(index)
+        // System.out.println(a.get(4));
+        // System.out.println(a.get(2));
+
+        //testing set
+        System.out.println(a.set(4, "sea plants"));
         System.out.println(a.get(4));
-        System.out.println(a.get(2));
     }
    }

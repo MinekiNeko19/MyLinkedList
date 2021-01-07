@@ -48,7 +48,16 @@ public class MyLinkedList{
         return temp;
     }
     public String toString() {
-        return "";
+        reset();
+        String s = "";
+        while (start.next() != null) {
+            s+=start.data();
+            start = start.next();
+            if (start.next() != null) {
+                s+=", ";
+            }
+        }
+        return s;
     }
     //Any helper method that returns a Node object MUST BE PRIVATE!
     private Node nodeAtIndex(int index) {
@@ -101,6 +110,9 @@ public class MyLinkedList{
 
         //testing set
         System.out.println(a.set(4, "sea plants"));
-        System.out.println(a.get(4));
+        // System.out.println(a.get(4));
+
+        // testing toString
+        System.out.println(a.toString());
     }
    }

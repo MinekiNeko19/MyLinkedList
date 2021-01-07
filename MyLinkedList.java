@@ -60,7 +60,7 @@ public class MyLinkedList{
 
     public String toString() {
         reset();
-        String s = "";
+        String s = "[";
         while (start.next() != null) {
             s+=start.data();
             start = start.next();
@@ -69,12 +69,12 @@ public class MyLinkedList{
             }
         }
         reset();
-        return s;
+        return s+"]";
     }
 
     public String toStringReversed() {
         reset();
-        String s = "";
+        String s = "[";
         while (end.prev() != null) {
             s+=end.data();
             end = end.prev();
@@ -83,7 +83,7 @@ public class MyLinkedList{
             }
         }
         reset();
-        return s;
+        return s+"]";
     }
 
     //Any helper method that returns a Node object MUST BE PRIVATE!

@@ -39,8 +39,7 @@ public class MyLinkedList{
 
     }
     public String get(int index) {
-        return start.next().data();
-        // not correct
+        return nodeAtIndex(index).data();
     }
     public String set(int index, String value) {
         return "";
@@ -93,6 +92,8 @@ public class MyLinkedList{
         a.reset();
         System.out.println(a.nodeAtIndex(3).data());
 
-
+        //testing get(index)
+        System.out.println(a.get(4));
+        System.out.println(a.get(2));
     }
    }

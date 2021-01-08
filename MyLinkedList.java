@@ -88,6 +88,32 @@ public class MyLinkedList{
         return s+"]";
     }
 
+    public String remove(int index) {
+        size--;
+        // remove head
+        if (index==0) {
+            String s = start.data();
+            start = start.next();
+            start.setPrev(null);
+            return s;
+        }
+        // remove tail
+
+        // one element
+
+        // remove middle
+        return "";
+    }
+
+    /*
+    *@postcondition: All of the elements from other are removed from the other, and connected to the end of this linked list.
+    *@postcondition: The size of other is reduced to 0.
+    *@postcondition: The size of this is now the combined sizes of both original lists
+    */
+    public void extend(MyLinkedList other){
+
+    }
+
     //Any helper method that returns a Node object MUST BE PRIVATE!
     private Node nodeAtIndex(int index) {
         reset();
@@ -109,15 +135,15 @@ public class MyLinkedList{
 
     public static void main(String[] args) {
         // Testing size and add(String value) GET(INT INDEX) CURRENTLY IS NOT CORRECT
-        // MyLinkedList a = new MyLinkedList();
-        // a.add("primodial soup");
+        MyLinkedList a = new MyLinkedList();
+        a.add("primodial soup");
         // System.out.println(a.size());
         // // System.out.println(a.get(0));
         // a.add("unicellular organism");
         // System.out.println(a.size());
         // System.out.println(a.get(0));
 
-        // a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
+        a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
 
         //testing helper method nodeAtIndex
         // System.out.println(a.nodeAtIndex(3).data());
@@ -154,5 +180,11 @@ public class MyLinkedList{
         //     e.printStackTrace();
         //     System.out.println("negative index or index greater than size");
         // }
+
+        // REMEMBER TO TEST FOR EMPTY NODES
+        //testing remove
+        //head
+        // System.out.println(a.remove(0));
+        // System.out.println(a.get(0));
     }
    }

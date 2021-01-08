@@ -136,7 +136,10 @@ public class MyLinkedList{
     *@postcondition: The size of this is now the combined sizes of both original lists
     */
     public void extend(MyLinkedList other){
-
+        size += other.size();
+        this.end.setNext(other.start);
+        other.start.setPrev(this.end);
+        this.end = other.end;
     }
 
     //Any helper method that returns a Node object MUST BE PRIVATE!
@@ -222,9 +225,16 @@ public class MyLinkedList{
         // System.out.println(a.get(0));
         // System.out.println(a.toString());
         //middle
-        System.out.println(a.toString());
-        System.out.println(a.remove(1));
-        System.out.println(a.toString());
+        // System.out.println(a.toString());
+        // System.out.println(a.remove(2));
+        // System.out.println(a.toString());
 
+        //testing extend
+        MyLinkedList b = new MyLinkedList();
+        b.add("land fish"); b.add("legs no fins"); b.add("fur?");
+        System.out.println(b.toString());
+        a.extend(b);
+        System.out.println(a.toString());
+        System.out.println(b.toString());
     }
    }

@@ -59,6 +59,7 @@ public class MyLinkedList{
     }
 
     public String toString() {
+        if (size == 1) return "[" + start.data() + "]";
         reset();
         String s = "[";
         while (start.next() != null) {
@@ -74,6 +75,7 @@ public class MyLinkedList{
     }
 
     public String toStringReversed() {
+        if (size == 1) return "[" + start.data() + "]";
         reset();
         String s = "[";
         while (end.prev() != null) {
@@ -90,9 +92,9 @@ public class MyLinkedList{
 
     public String remove(int index) {
         reset();
-        size--;
+        size--; // this changes the size immediately; this should be taken into account when using size as a reference
         // remove head
-        if (index==0) {
+        if (index==0 && size > 0) {
             String s = start.data();
             start = start.next();
             start.prev().setNext(null);
@@ -100,7 +102,7 @@ public class MyLinkedList{
             return s;
         }
         // remove tail
-        if (index==size()) {
+        if (index==size() && size > 0) {
             String s = end.data();
             end = end.prev();
             end.next().setPrev(null);
@@ -108,7 +110,12 @@ public class MyLinkedList{
             return s;
         }
         // one element
-
+        if (size()==0) {
+            String s = start.data();
+            start.setData(null);
+            end.setData(null);
+            return s;
+        }
         // remove middle
         return "";
     }
@@ -151,7 +158,7 @@ public class MyLinkedList{
         // System.out.println(a.size());
         // System.out.println(a.get(0));
 
-        a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
+        // a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
 
         //testing helper method nodeAtIndex
         // System.out.println(a.nodeAtIndex(3).data());
@@ -196,8 +203,14 @@ public class MyLinkedList{
         // System.out.println(a.get(0));
         // System.out.println(a.toString());
         //tail
-        System.out.println(a.remove(a.size()-1));
-        System.out.println(a.get(a.size()-1));
+        // System.out.println(a.remove(a.size()-1));
+        // System.out.println(a.get(a.size()-1));
+        // System.out.println(a.toString());
+        //one element
         System.out.println(a.toString());
+        System.out.println(a.remove(0));
+        System.out.println(a.get(0));
+        System.out.println(a.toString());
+
     }
    }

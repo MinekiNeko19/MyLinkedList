@@ -59,6 +59,7 @@ public class MyLinkedList{
     }
 
     public String toString() {
+        if (size == 0) return "[]";
         if (size == 1) return "[" + start.data() + "]";
         reset();
         String s = "[";
@@ -75,6 +76,7 @@ public class MyLinkedList{
     }
 
     public String toStringReversed() {
+        if (size == 0) return "[]";
         if (size == 1) return "[" + start.data() + "]";
         reset();
         String s = "[";
@@ -117,7 +119,15 @@ public class MyLinkedList{
             return s;
         }
         // remove middle
-        return "";
+        nodeAtIndex(index);
+        String s = start.data();
+        start.prev().setNext(start.next());
+        start.next().setPrev(start.prev());
+        Node temp = start;
+        start = nodeAtIndex(0);
+        temp.setNext(null);
+        temp.setPrev(null);
+        return s;
     }
 
     /*
@@ -149,16 +159,16 @@ public class MyLinkedList{
     }
 
     public static void main(String[] args) {
-        // Testing size and add(String value) GET(INT INDEX) CURRENTLY IS NOT CORRECT
+        // Testing size and add(String value)
         MyLinkedList a = new MyLinkedList();
-        a.add("primodial soup");
+        a.add("primordial soup");
         // System.out.println(a.size());
         // // System.out.println(a.get(0));
         // a.add("unicellular organism");
         // System.out.println(a.size());
         // System.out.println(a.get(0));
 
-        // a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
+        a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
 
         //testing helper method nodeAtIndex
         // System.out.println(a.nodeAtIndex(3).data());
@@ -207,9 +217,13 @@ public class MyLinkedList{
         // System.out.println(a.get(a.size()-1));
         // System.out.println(a.toString());
         //one element
+        // System.out.println(a.toString());
+        // System.out.println(a.remove(0));
+        // System.out.println(a.get(0));
+        // System.out.println(a.toString());
+        //middle
         System.out.println(a.toString());
-        System.out.println(a.remove(0));
-        System.out.println(a.get(0));
+        System.out.println(a.remove(1));
         System.out.println(a.toString());
 
     }

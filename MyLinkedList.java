@@ -93,6 +93,7 @@ public class MyLinkedList{
     }
 
     public String remove(int index) {
+        if (index < 0 || index >= size()) throw new IndexOutOfBoundsException();
         reset();
         size--; // this changes the size immediately; this should be taken into account when using size as a reference
         // remove head

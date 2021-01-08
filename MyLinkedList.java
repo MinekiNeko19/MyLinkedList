@@ -89,18 +89,21 @@ public class MyLinkedList{
     }
 
     public String remove(int index) {
+        reset();
         size--;
         // remove head
         if (index==0) {
             String s = start.data();
             start = start.next();
+            start.prev().setNext(null);
             start.setPrev(null);
             return s;
         }
         // remove tail
-        if (index==size()-1) {
+        if (index==size()) {
             String s = end.data();
             end = end.prev();
+            end.next().setPrev(null);
             end.setNext(null);
             return s;
         }
@@ -122,7 +125,7 @@ public class MyLinkedList{
     //Any helper method that returns a Node object MUST BE PRIVATE!
     private Node nodeAtIndex(int index) {
         reset();
-        if (index < 0 || index >= size()) throw new IndexOutOfBoundsException();
+        if (index < 0 || index > size()) throw new IndexOutOfBoundsException();
         for (int i = 0; i < index; i++) {
             start=start.next();
         }
@@ -191,8 +194,10 @@ public class MyLinkedList{
         //head
         // System.out.println(a.remove(0));
         // System.out.println(a.get(0));
+        // System.out.println(a.toString());
         //tail
         System.out.println(a.remove(a.size()-1));
-        System.out.println(a.get(a.size()));
+        System.out.println(a.get(a.size()-1));
+        System.out.println(a.toString());
     }
    }

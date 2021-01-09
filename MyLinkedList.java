@@ -138,9 +138,17 @@ public class MyLinkedList{
     */
     public void extend(MyLinkedList other){
         size += other.size();
-        this.end.setNext(other.start);
-        other.start.setPrev(this.end);
-        this.end = other.end;
+        this.end.setNext(new Node(other.start.data())); // links this end to other start
+        this.end.next().setNext(other.start.next());
+        this.end.next().setPrev(end);
+        other.start.next().setPrev(this.end.next());    // links other start's next to this end
+
+        this.end = new Node(other.end.data());  // moving end
+        this.end.setPrev(other.end.prev());
+        other.end.prev().setNext(this.end);
+        other.start.setData(null);
+        other.end.setData(null);
+        other.size = 0;
     }
 
     //Any helper method that returns a Node object MUST BE PRIVATE!
@@ -164,15 +172,15 @@ public class MyLinkedList{
 
     public static void main(String[] args) {
         // Testing size and add(String value)
-        MyLinkedList a = new MyLinkedList();
-        a.add("primordial soup");
+        // MyLinkedList a = new MyLinkedList();
+        // a.add("primordial soup");
         // System.out.println(a.size());
         // // System.out.println(a.get(0));
         // a.add("unicellular organism");
         // System.out.println(a.size());
         // System.out.println(a.get(0));
 
-        a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
+        // a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
 
         //testing helper method nodeAtIndex
         // System.out.println(a.nodeAtIndex(3).data());
@@ -231,11 +239,31 @@ public class MyLinkedList{
         // System.out.println(a.toString());
 
         //testing extend
-        MyLinkedList b = new MyLinkedList();
-        b.add("land fish"); b.add("legs no fins"); b.add("fur?");
-        System.out.println(b.toString());
-        a.extend(b);
-        System.out.println(a.toString());
-        System.out.println(b.toString());
+        // MyLinkedList b = new MyLinkedList();
+        // b.add("land fish"); b.add("legs no fins"); b.add("fur?");
+        // System.out.println(b.toString());
+        // a.extend(b);
+        // System.out.println(a.toString());
+        // System.out.println(b.toString());
+
+        //Mr. K's quick testing code for part 2
+        // MyLinkedList a = new MyLinkedList();
+        // MyLinkedList b = new MyLinkedList();
+        // for(int i = 0; i < 10; i++){
+        //   if(i < 5){
+        //     a.add(i+"");
+        //   }else{
+        //     b.add(i+"");
+        //   }
+        // }
+        // System.out.println();
+        // System.out.println("A:"+a+a.size());
+        // System.out.println("B:"+b+b.size());
+    
+        // a.extend(b);
+        // System.out.println("A:"+a+a.size());
+        // System.out.println("B:"+b+b.size());
+        // System.out.println("A reversed:"+a.toStringReversed()+a.size());
+        // System.out.println("B reversed:"+b.toStringReversed()+b.size());
     }
    }

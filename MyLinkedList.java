@@ -149,7 +149,7 @@ public class MyLinkedList{
             other.start.setNext(null);
             other.end.setPrev(null);
         }
-        else if (this.size == 1 && other.size == 1) {
+        else if (other.size == 1) {
             add(other.start.data());
         }
         else if (other.size > 1 && this.size > 1) {
@@ -198,7 +198,7 @@ public class MyLinkedList{
         // System.out.println(a.size());
         // System.out.println(a.get(0));
 
-        // a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
+        a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
 
         //testing helper method nodeAtIndex
         // System.out.println(a.nodeAtIndex(3).data());
@@ -268,7 +268,7 @@ public class MyLinkedList{
         c.add("meow");
         System.out.println(a.toString());
         System.out.println(c.toString());
-        c.extend(a);
+        a.extend(c);
         System.out.println(a.toString());
         System.out.println(c.toString());
         // System.out.println(c.size());

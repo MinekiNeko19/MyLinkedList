@@ -146,10 +146,13 @@ public class MyLinkedList{
             this.end.setPrev(other.end.prev());
             other.end.prev().setNext(this.end);
 
-            other.start.setData(null);
-            other.end.setData(null);
+            other.start.setNext(null);
+            other.end.setPrev(null);
         }
-        else if (other.size > 0 && this.size >= 0) {
+        else if (this.size == 1 && other.size == 1) {
+            add(other.start.data());
+        }
+        else if (other.size > 1 && this.size > 1) {
             this.end.setNext(new Node(other.start.data())); // links this end to other start
             this.end.next().setNext(other.start.next());
             this.end.next().setPrev(end);
@@ -159,8 +162,8 @@ public class MyLinkedList{
             this.end.setPrev(other.end.prev());
             other.end.prev().setNext(this.end);
 
-            other.start.setData(null);
-            other.end.setData(null);
+            other.start.setNext(null);
+            other.end.setPrev(null);
         }
         this.size += other.size;
         other.size = 0;
@@ -195,7 +198,7 @@ public class MyLinkedList{
         // System.out.println(a.size());
         // System.out.println(a.get(0));
 
-        a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
+        // a.add("multicellular organism"); a.add("plants"); a.add("aquatic animals");
 
         //testing helper method nodeAtIndex
         // System.out.println(a.nodeAtIndex(3).data());
@@ -262,13 +265,13 @@ public class MyLinkedList{
         // System.out.println(b.toString());
 
         MyLinkedList c = new MyLinkedList();
-        // c.add("meow");
+        c.add("meow");
         System.out.println(a.toString());
         System.out.println(c.toString());
         c.extend(a);
         System.out.println(a.toString());
         System.out.println(c.toString());
-        System.out.println(c.size());
+        // System.out.println(c.size());
 
         //Mr. K's quick testing code for part 2
         // MyLinkedList a = new MyLinkedList();

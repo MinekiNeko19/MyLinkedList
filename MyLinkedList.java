@@ -137,7 +137,11 @@ public class MyLinkedList{
     *@postcondition: The size of this is now the combined sizes of both original lists
     */
     public void extend(MyLinkedList other){
-        if (this.size == 0 && other.size != 0) {
+        if (other.size == 1) {
+            add(other.start.data());
+            size--;
+        }
+        else if (this.size == 0 && other.size != 0) {
             this.start = new Node(other.start.data());
             this.start.setNext(other.start.next());
             other.start.next().setPrev(this.start);
@@ -148,9 +152,6 @@ public class MyLinkedList{
 
             other.start.setNext(null);
             other.end.setPrev(null);
-        }
-        else if (other.size == 1) {
-            add(other.start.data());
         }
         else if (other.size > 1 && this.size >= 1) {
             this.end.setNext(new Node(other.start.data())); // links this end to other start
@@ -190,9 +191,8 @@ public class MyLinkedList{
 
     public static void main(String[] args) {
         // Testing size and add(String value)
-        MyLinkedList a = new MyLinkedList();
+        // MyLinkedList a = new MyLinkedList();
         // a.add("primordial soup");
-        // System.out.println(a.size());
         // // System.out.println(a.get(0));
         // a.add("unicellular organism");
         // System.out.println(a.size());
@@ -264,14 +264,17 @@ public class MyLinkedList{
         // System.out.println(a.toString());
         // System.out.println(b.toString());
 
-        MyLinkedList c = new MyLinkedList();
+        // MyLinkedList c = new MyLinkedList();
         // c.add("meow");
-        System.out.println(a.toString());
-        System.out.println(c.toString());
-        c.extend(a);
-        System.out.println(a.toString());
-        System.out.println(c.toString());
         // System.out.println(c.size());
+        // System.out.println(a.toString());
+        // System.out.println(c.toString());
+        // c.extend(a);
+        // System.out.println(a.toString());
+        // System.out.println(c.toString());
+        // c.add(a.start.data());
+        // System.out.println(c.size());
+        // System.out.println(c.get(0));
 
         //Mr. K's quick testing code for part 2
         // MyLinkedList a = new MyLinkedList();

@@ -137,41 +137,18 @@ public class MyLinkedList{
     *@postcondition: The size of this is now the combined sizes of both original lists
     */
     public void extend(MyLinkedList other){
-        if (other.size==0) {
-        } else if(this.size == 0) {
-            size = other.size();
-            start = new Node(other.start.data());
-            start.setNext(other.start.next());
-            end = new Node(other.end.data());
-            end.setPrev(other.end.prev());
-            other.size = 0;
-            other.start.setNext(null);
-            other.end.setPrev(null);
-        } else if (this.size == 1) {
-            size+=other.size;
-            this.end = new Node(other.start.data());
-            this.end.setPrev(start);
-            this.start.setNext(end);
-            this.end = new Node(other.end.data());
-            this.end.setPrev(other.end.prev());
+        this.end.setNext(new Node(other.start.data())); // links this end to other start
+        this.end.next().setNext(other.start.next());
+        this.end.next().setPrev(end);
+        other.start.next().setPrev(this.end.next());    // links other start's next to this end
 
-            other.start.next().setPrev(start);
-            other.end.prev().setNext(end);
-            other.size = 0;
-        } else {
-            size += other.size();
-            this.end.setNext(new Node(other.start.data())); // links this end to other start
-            this.end.next().setNext(other.start.next());
-            this.end.next().setPrev(end);
-            other.start.next().setPrev(this.end.next());    // links other start's next to this end
-
-            this.end = new Node(other.end.data());  // moving end
-            this.end.setPrev(other.end.prev());
-            other.end.prev().setNext(this.end);
-            other.start.setNext(null);
-            other.end.setPrev(null);
-            other.size = 0;
-        }
+        this.end = new Node(other.end.data());  // moving end
+        this.end.setPrev(other.end.prev());
+        other.end.prev().setNext(this.end);
+        other.start.setData(null);
+        other.end.setData(null);
+        other.size = 0;
+        size += other.size;
     }
 
     //Any helper method that returns a Node object MUST BE PRIVATE!
@@ -262,18 +239,18 @@ public class MyLinkedList{
         // System.out.println(a.toString());
 
         //testing extend
-        // MyLinkedList b = new MyLinkedList();
-        // b.add("land fish"); b.add("legs no fins"); b.add("fur?");
-        // System.out.println(b.toString());
-        // a.extend(b);
-        // System.out.println(a.toString());
-        // System.out.println(b.toString());
+        MyLinkedList b = new MyLinkedList();
+        b.add("land fish"); b.add("legs no fins"); b.add("fur?");
+        System.out.println(b.toString());
+        a.extend(b);
+        System.out.println(a.toString());
+        System.out.println(b.toString());
 
         MyLinkedList c = new MyLinkedList();
         // c.add("meow");
-        c.extend(a);
-        System.out.println(a.toString());
-        System.out.println(c.toString());
+        // c.extend(a);
+        // System.out.println(a.toString());
+        // System.out.println(c.toString());
 
         //Mr. K's quick testing code for part 2
         // MyLinkedList a = new MyLinkedList();

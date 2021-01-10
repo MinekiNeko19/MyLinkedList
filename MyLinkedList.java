@@ -152,7 +152,10 @@ public class MyLinkedList{
         else if (other.size == 1) {
             add(other.start.data());
         }
-        else if (other.size > 1 && this.size > 1) {
+        // else if (this.size==1) {
+            
+        // }
+        else if (other.size > 1 && this.size >= 1) {
             this.end.setNext(new Node(other.start.data())); // links this end to other start
             this.end.next().setNext(other.start.next());
             this.end.next().setPrev(end);
@@ -268,10 +271,10 @@ public class MyLinkedList{
         c.add("meow");
         System.out.println(a.toString());
         System.out.println(c.toString());
-        a.extend(c);
+        c.extend(a);
         System.out.println(a.toString());
         System.out.println(c.toString());
-        // System.out.println(c.size());
+        System.out.println(c.size());
 
         //Mr. K's quick testing code for part 2
         // MyLinkedList a = new MyLinkedList();

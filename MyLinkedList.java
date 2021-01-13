@@ -115,8 +115,8 @@ public class MyLinkedList{
         // one element
         if (size()==0) {
             String s = start.data();
-            start.setData(null);
-            end.setData(null);
+            start = null;
+            end = null;
             return s;
         }
         // remove middle
